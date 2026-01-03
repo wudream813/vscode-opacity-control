@@ -1,0 +1,69 @@
+{
+	"name": "vscode-opacity-control",
+	"displayName": "wu_dream 的 VSCode 透明度控制",
+	"description": "通过 Windows API 调整 VSCode 窗口透明度",
+	"version": "1.2.0",
+	"publisher": "wudream",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wudream813/vscode-opacity-control.git"
+	},
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"icon": "./icon.png",
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"categories" : [
+		"Other"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "opacityControl.decrease",
+				"title": "降低窗口透明度"
+			},
+			{
+				"command": "opacityControl.increase",
+				"title": "提高窗口透明度"
+			},
+			{
+				"command": "opacityControl.set",
+				"title": "设置窗口透明度"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "opacityControl.decrease",
+				"key": "ctrl+alt+z"
+			},
+			{
+				"command": "opacityControl.increase",
+				"key": "ctrl+alt+c"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "透明度控制",
+			"properties": {
+				"opacityControl.opacity": {
+					"type": "number",
+					"default": 225,
+					"description": "透明度 (0 ~ 255，255 表示完全不透明)",
+					"maximum": 255,
+					"minimum": 0
+				},
+				"opacityControl.step": {
+					"type": "number",
+					"default": 5,
+					"description": "每次按键调整的步长 (1 ~ 255)",
+					"maximum": 255,
+					"minimum": 1
+				}
+			}
+		}
+	}
+}
